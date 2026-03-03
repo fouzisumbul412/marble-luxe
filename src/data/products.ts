@@ -13,6 +13,12 @@ export interface Product {
   rating: number;
   reviews: number;
   featured?: boolean;
+  variants?: string[];
+}
+
+export function getProductVariants(product: Product): string[] {
+  if (product.variants && product.variants.length > 0) return product.variants;
+  return [product.size];
 }
 
 export interface Category {
@@ -39,6 +45,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviews: 124,
     featured: true,
+    variants: ["500 ml", "1 Litre", "5 Litre"],
   },
   {
     id: "drumble-matic",
@@ -55,6 +62,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviews: 98,
     featured: true,
+    variants: ["500 ml", "1 Litre", "2 Litre"],
   },
   {
     id: "drumble-blue",
@@ -86,6 +94,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 215,
     featured: true,
+    variants: ["250 ml", "500 ml", "1 Litre"],
   },
   {
     id: "brambells-blue",
@@ -101,6 +110,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviews: 178,
     featured: true,
+    variants: ["250 ml", "500 ml", "1 Litre"],
   },
   {
     id: "flushberri-citrus",
@@ -117,6 +127,7 @@ export const products: Product[] = [
     rating: 4.4,
     reviews: 89,
     featured: true,
+    variants: ["250 ml", "500 ml", "1 Litre"],
   },
   {
     id: "rustyk",

@@ -8,12 +8,24 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 function HeroSection() {
   return (
-    <section className="relative marble-bg overflow-hidden py-16 md:py-24 lg:py-28">
+    <section className="relative overflow-hidden" style={{ height: "85vh", minHeight: 500 }}>
+      {/* Parallax background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/brambells-neutral.jpeg')",
+          backgroundAttachment: "fixed",
+          filter: "brightness(0.4) saturate(0.7)",
+        }}
+      />
+      {/* Marble overlay */}
+      <div className="absolute inset-0 marble-bg opacity-30" />
+
       {/* Sparkles */}
       {[...Array(6)].map((_, i) => (
         <div
           key={i}
-          className="absolute w-1 h-1 bg-gold/40 rounded-full"
+          className="absolute w-1 h-1 bg-gold/60 rounded-full"
           style={{
             top: `${20 + Math.random() * 60}%`,
             left: `${10 + Math.random() * 80}%`,
@@ -22,18 +34,18 @@ function HeroSection() {
         />
       ))}
 
-      <div className="container-tight relative z-10 text-center">
+      <div className="container-tight relative z-10 h-full flex flex-col items-center justify-center text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4 font-medium">Premium Surface Care</p>
-        <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
+        <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
           Engineered for<br />
           <span className="text-gold">Italian Marble.</span>
         </h1>
-        <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto mb-8">
+        <p className="text-white/70 text-sm md:text-base max-w-md mx-auto mb-8">
           Non-acidic protection for premium stone & luxury surfaces.
         </p>
         <div className="flex items-center justify-center gap-3">
           <Link to="/shop" className="btn-gold">Shop Now</Link>
-          <a href="#featured" className="btn-outline-gold">Buy Now</a>
+          <a href="#featured" className="btn-outline-gold !text-white !border-white/40 hover:!border-gold hover:!text-gold">Buy Now</a>
         </div>
       </div>
 
