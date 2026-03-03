@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, ShoppingBag, Menu, X } from "lucide-react";
-import { toast } from "sonner";
+import { useCart } from "@/contexts/CartContext";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -15,16 +15,15 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { totalItems, setSliderOpen } = useCart();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-panel" style={{ height: 60 }}>
       <div className="container-tight h-full flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="font-heading text-xl font-bold tracking-tight text-foreground">
           Upmarket<span className="text-gold">.</span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -39,7 +38,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right */}
         <div className="flex items-center gap-3">
           <button className="p-2 text-foreground/60 hover:text-gold transition-colors" aria-label="Search">
             <Search size={18} />
@@ -47,10 +45,12 @@ export default function Header() {
           <button
             className="p-2 text-foreground/60 hover:text-gold transition-colors relative"
             aria-label="Cart"
-            onClick={() => toast("Cart is empty", { description: "Browse our shop to add products." })}
+            onClick={() => setSliderOpen(true)}
           >
             <ShoppingBag size={18} />
-            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold text-primary-foreground text-[10px] rounded-full flex items-center justify-center font-bold">0</span>
+            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold text-primary-foreground text-[10px] rounded-full flex items-center justify-center font-bold">
+              {totalItems}
+            </span>
           </button>
           <Link to="/shop" className="btn-gold hidden sm:inline-flex text-xs px-4 py-2">
             Buy Now
@@ -65,7 +65,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-foreground/20" onClick={() => setMobileOpen(false)} />
