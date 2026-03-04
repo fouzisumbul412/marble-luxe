@@ -87,7 +87,7 @@ function FeaturedCarousel() {
   }, []);
 
   return (
-    <section id="featured" className="section-compact bg-background overflow-hidden">
+    <section id="featured" className="section-compact  overflow-hidden">
       <div className="container-tight">
         <div className="flex items-end justify-between mb-6" data-aos="fade-up">
           <div>
@@ -159,7 +159,7 @@ function CTABanner() {
 
 function CategoryStrip() {
   return (
-    <section className="section-compact marble-bg">
+    <section className="section-compact ">
       <div className="container-tight">
         <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-6" data-aos="fade-up">Collections</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -194,7 +194,7 @@ function WhyChooseUs() {
   ];
 
   return (
-    <section className="section-compact bg-background relative overflow-hidden">
+    <section className="section-compact  relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url('/images/brambells-blue.jpeg')", backgroundSize: "cover", backgroundPosition: "center" }} />
       <div className="container-tight relative z-10">
         <div className="text-center mb-10" data-aos="fade-up">
@@ -231,7 +231,7 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="section-compact marble-bg relative overflow-hidden">
+    <section className="section-compact relative overflow-hidden">
       <div className="container-tight">
         <div className="text-center mb-10" data-aos="fade-up">
           <p className="text-xs uppercase tracking-[0.3em] text-gold mb-2">Simple & Effective</p>
@@ -263,7 +263,7 @@ function PopularItems() {
   const display = popular.slice(0, 6);
 
   return (
-    <section className="section-compact bg-background">
+    <section className="section-compact ">
       <div className="container-tight">
         <div className="flex items-end justify-between mb-6" data-aos="fade-up">
           <div>
@@ -327,7 +327,7 @@ function ReviewsSection() {
   ];
 
   return (
-    <section className="section-compact marble-bg">
+    <section className="section-compact ">
       <div className="container-tight">
         <div className="text-center mb-8" data-aos="fade-up">
           <p className="text-xs uppercase tracking-[0.3em] text-gold mb-2">Testimonials</p>
@@ -356,7 +356,7 @@ function ReviewsSection() {
 
 function FinalCTA() {
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section className="py-16 md:py-20 ">
       <div className="container-tight text-center" data-aos="fade-up">
         <p className="text-xs uppercase tracking-[0.3em] text-gold mb-3">Ready to Transform?</p>
         <h2 className="font-heading text-2xl md:text-4xl font-bold mb-4">

@@ -15,7 +15,7 @@ export default function Categories() {
     <PageTransition>
       <Layout>
         <PageHero title="Surface Care Collections" subtitle="Engineered formulas for luxury environments." compact />
-        <section className="section-compact bg-background">
+        <section className="section-compact ">
           <div className="container-tight space-y-12">
             {categories.map((cat, ci) => {
               const catProducts = products.filter((p) => p.category === cat.name);

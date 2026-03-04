@@ -47,7 +47,7 @@ export default function ProductDetail() {
   return (
     <PageTransition>
       <Layout>
-        <section className="marble-bg py-8 md:py-14">
+        <section className=" py-8 md:py-14">
           <div className="container-tight">
             <p className="text-xs text-muted-foreground mb-4">
               <Link to="/" className="hover:text-gold">Home</Link> / <Link to="/shop" className="hover:text-gold">Shop</Link> / {product.name}
@@ -152,7 +152,7 @@ export default function ProductDetail() {
         </section>
 
         {related.length > 0 && (
-          <section className="section-compact bg-background">
+          <section className="section-compact ">
             <div className="container-tight">
               <h2 className="font-heading text-xl font-bold mb-4">You May Also Like</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

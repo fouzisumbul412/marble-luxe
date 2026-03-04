@@ -12,7 +12,7 @@ export default function FAQ() {
     <PageTransition>
       <Layout>
         <PageHero title="Frequently Asked Questions" subtitle="Everything you need to know about our premium surface care products." compact />
-        <section className="section-compact bg-background">
+        <section className="section-compact">
           <div className="container-tight max-w-2xl">
             <div className="space-y-0">
               {faqs.map((faq, i) => (

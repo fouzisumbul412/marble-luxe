@@ -19,7 +19,7 @@ export default function Checkout() {
       <PageTransition>
         <Layout>
           <PageHero title="Checkout" subtitle="Complete your order" />
-          <section className="section-compact bg-background">
+          <section className="section-compact ">
             <div className="container-tight text-center py-12">
               <p className="text-sm text-muted-foreground mb-4">Your cart is empty</p>
               <Link to="/shop" className="btn-gold">Shop Now</Link>
@@ -34,7 +34,7 @@ export default function Checkout() {
     <PageTransition>
       <Layout>
         <PageHero title="Checkout" subtitle="Complete your order" />
-        <section className="section-compact bg-background">
+        <section className="section-compact ">
           <div className="container-tight">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-4">

@@ -19,7 +19,7 @@ export default function Shop() {
     <PageTransition>
       <Layout>
         <PageHero title="Shop Premium Surface Care" subtitle="Engineered formulas for every luxury surface." compact />
-        <section className="section-compact bg-background">
+        <section className="section-compact ">
           <div className="container-tight">
             <div className="flex flex-wrap gap-2 mb-6" data-aos="fade-up">
               {cats.map((c) => (

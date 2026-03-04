@@ -13,7 +13,7 @@ export default function About() {
     <PageTransition>
       <Layout>
         <PageHero title="Luxury Care, Engineered" subtitle="Non-acidic, professional-grade formulas trusted by architects and designers." />
-        <section className="section-compact bg-background">
+        <section className="section-compact ">
           <div className="container-tight max-w-3xl space-y-12">
             <div data-aos="fade-up">
               <h2 className="font-heading text-xl font-bold mb-3">Our Story</h2>

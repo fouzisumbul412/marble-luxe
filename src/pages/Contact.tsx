@@ -9,7 +9,7 @@ export default function Contact() {
     <PageTransition>
       <Layout>
         <PageHero title="Concierge Support" subtitle="We're here to help with product selection, bulk orders, and professional partnerships." compact />
-        <section className="section-compact bg-background">
+        <section className="section-compact ">
           <div className="container-tight max-w-4xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="glass-card rounded-xl p-6">

@@ -13,7 +13,7 @@ export default function Cart() {
     <PageTransition>
       <Layout>
         <PageHero title="Shopping Cart" subtitle="Review your selections before checkout" />
-        <section className="section-compact bg-background">
+        <section className="section-compact ">
           <div className="container-tight">
             {items.length === 0 ? (
               <div className="text-center py-16">
