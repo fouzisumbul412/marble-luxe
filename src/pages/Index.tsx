@@ -14,7 +14,7 @@ function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/images/brambells-neutral.jpeg')",
+          backgroundImage: "url('/images/ecom.png')",
           backgroundAttachment: "fixed",
           filter: "brightness(0.35) saturate(0.6)",
         }}
