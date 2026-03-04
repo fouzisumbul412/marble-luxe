@@ -1,3 +1,9 @@
+export interface VariantPrice {
+  label: string;
+  price: number;
+  originalPrice?: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -14,11 +20,20 @@ export interface Product {
   reviews: number;
   featured?: boolean;
   variants?: string[];
+  variantPrices?: VariantPrice[];
 }
 
 export function getProductVariants(product: Product): string[] {
   if (product.variants && product.variants.length > 0) return product.variants;
   return [product.size];
+}
+
+export function getVariantPrice(product: Product, variant: string): { price: number; originalPrice?: number } {
+  if (product.variantPrices) {
+    const vp = product.variantPrices.find((v) => v.label === variant);
+    if (vp) return { price: vp.price, originalPrice: vp.originalPrice };
+  }
+  return { price: product.price, originalPrice: product.originalPrice };
 }
 
 export interface Category {
@@ -46,6 +61,11 @@ export const products: Product[] = [
     reviews: 124,
     featured: true,
     variants: ["500 ml", "1 Litre", "5 Litre"],
+    variantPrices: [
+      { label: "500 ml", price: 160, originalPrice: 200 },
+      { label: "1 Litre", price: 280, originalPrice: 350 },
+      { label: "5 Litre", price: 1200, originalPrice: 1500 },
+    ],
   },
   {
     id: "drumble-matic",
@@ -63,6 +83,11 @@ export const products: Product[] = [
     reviews: 98,
     featured: true,
     variants: ["500 ml", "1 Litre", "2 Litre"],
+    variantPrices: [
+      { label: "500 ml", price: 170, originalPrice: 220 },
+      { label: "1 Litre", price: 299, originalPrice: 380 },
+      { label: "2 Litre", price: 549, originalPrice: 700 },
+    ],
   },
   {
     id: "drumble-blue",
@@ -95,6 +120,11 @@ export const products: Product[] = [
     reviews: 215,
     featured: true,
     variants: ["250 ml", "500 ml", "1 Litre"],
+    variantPrices: [
+      { label: "250 ml", price: 250, originalPrice: 300 },
+      { label: "500 ml", price: 450, originalPrice: 550 },
+      { label: "1 Litre", price: 799, originalPrice: 999 },
+    ],
   },
   {
     id: "brambells-blue",
@@ -111,6 +141,11 @@ export const products: Product[] = [
     reviews: 178,
     featured: true,
     variants: ["250 ml", "500 ml", "1 Litre"],
+    variantPrices: [
+      { label: "250 ml", price: 240 },
+      { label: "500 ml", price: 420 },
+      { label: "1 Litre", price: 750 },
+    ],
   },
   {
     id: "flushberri-citrus",
@@ -128,6 +163,11 @@ export const products: Product[] = [
     reviews: 89,
     featured: true,
     variants: ["250 ml", "500 ml", "1 Litre"],
+    variantPrices: [
+      { label: "250 ml", price: 99, originalPrice: 120 },
+      { label: "500 ml", price: 180, originalPrice: 220 },
+      { label: "1 Litre", price: 320, originalPrice: 400 },
+    ],
   },
   {
     id: "rustyk",

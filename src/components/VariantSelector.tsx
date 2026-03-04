@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import type { Product } from "@/data/products";
-import { getProductVariants } from "@/data/products";
+import { getProductVariants, getVariantPrice } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
 
 interface Props {
@@ -19,6 +19,8 @@ export default function VariantSelector({ product, open, onClose, mode }: Props)
 
   if (!open) return null;
 
+  const { price, originalPrice } = getVariantPrice(product, selected);
+
   const handleConfirm = () => {
     addToCart(product, selected, qty);
     onClose();
@@ -31,7 +33,7 @@ export default function VariantSelector({ product, open, onClose, mode }: Props)
         <div className="flex items-start justify-between">
           <div>
             <h3 className="font-heading text-lg font-semibold text-foreground">{product.name}</h3>
-            <p className="text-xs text-muted-foreground">{product.size}</p>
+            <p className="text-xs text-muted-foreground">{product.category}</p>
           </div>
           <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground"><X size={18} /></button>
         </div>
@@ -39,19 +41,22 @@ export default function VariantSelector({ product, open, onClose, mode }: Props)
         <div>
           <p className="text-xs font-medium text-foreground mb-2">Select Variant</p>
           <div className="flex flex-wrap gap-2">
-            {variants.map((v) => (
-              <button
-                key={v}
-                onClick={() => setSelected(v)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                  selected === v
-                    ? "border-gold bg-gold/10 text-gold"
-                    : "border-border text-muted-foreground hover:border-gold/50"
-                }`}
-              >
-                {v}
-              </button>
-            ))}
+            {variants.map((v) => {
+              const vp = getVariantPrice(product, v);
+              return (
+                <button
+                  key={v}
+                  onClick={() => setSelected(v)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                    selected === v
+                      ? "border-gold bg-gold/10 text-gold"
+                      : "border-border text-muted-foreground hover:border-gold/50"
+                  }`}
+                >
+                  {v} — ₹{vp.price}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -62,7 +67,10 @@ export default function VariantSelector({ product, open, onClose, mode }: Props)
             <span className="px-3 py-1.5 text-sm font-medium">{qty}</span>
             <button onClick={() => setQty(qty + 1)} className="px-3 py-1.5 text-sm hover:bg-muted transition">+</button>
           </div>
-          <span className="ml-auto text-base font-bold text-foreground">₹{product.price * qty}</span>
+          <div className="ml-auto text-right">
+            <span className="text-base font-bold text-foreground">₹{price * qty}</span>
+            {originalPrice && <span className="text-xs text-muted-foreground line-through ml-2">₹{originalPrice * qty}</span>}
+          </div>
         </div>
 
         <button onClick={handleConfirm} className="w-full btn-gold text-sm py-3">
